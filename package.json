@@ -1,17 +1,19 @@
 {
   "name": "mindx-ticket-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ticket Management System - Hexagonal Architecture",
   "type": "module",
-  "main": "index.js",
+  "main": "dist/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/main.ts",
     "build": "tsc",
-    "start": "node dist/main.js"
+    "dev:server": "nodemon src/server.ts",
+    "dev:cli": "tsx src/cli.ts",
+    "start": "node dist/server.js",
+    "start:cli": "node dist/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Do Anh Quan",
   "license": "ISC",
   "dependencies": {
     "commander": "^14.0.3",
@@ -27,6 +29,7 @@
     "@types/uuid": "^10.0.0",
     "nodemon": "^3.1.14",
     "ts-node": "^10.9.2",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   }
 }
