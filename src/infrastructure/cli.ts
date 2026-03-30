@@ -1,8 +1,8 @@
 import { Command } from "commander";
-import { InMemoryTicketRepository } from "./infrastructure/repositories/InMemoryTicketRepository.js";
+import { InMemoryTicketRepository } from "./repositories/InMemoryTicketRepository.js";
 import { InMemoryActivityLogRepository } from "./infrastructure/repositories/InMemoryActivityLogRepository.js";
-import { CreateTicketService } from "./application/services/CreateTicket.service.js";
-import { GetTicketService } from "./application/services/GetTicket.service.js";
+import { CreateTicketService } from "../application/services/CreateTicket.service.js";
+import { GetTicketService } from "../application/services/GetTicket.service.js";
 
 
 const program = new Command();

@@ -1,7 +1,7 @@
-import { CreateTicketService } from "./application/services/CreateTicket.service.js";
-import { GetTicketService } from "./application/services/GetTicket.service.js";
-import { InMemoryTicketRepository } from "./infrastructure/repositories/InMemoryTicketRepository.js";
-import { TicketTitle } from "./domain/value-objects/TicketTitle.js";
+import { CreateTicketService } from "../application/services/CreateTicket.service.js";
+import { GetTicketService } from "../application/services/GetTicket.service.js";
+import { InMemoryTicketRepository } from "./repositories/InMemoryTicketRepository.js";
+import { TicketTitle } from "../domain/value-objects/TicketTitle.js";
 
 
 async function bootstrap() {
