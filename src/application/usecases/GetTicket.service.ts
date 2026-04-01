@@ -1,8 +1,8 @@
 import type { Ticket } from "../../domain/Ticket.js";
-import type { GetTicket } from "../ports/in/GetTicket.port.js";
-import type { ITicketRepository } from "../ports/out/ITicketRepository.js";
+import type { IGetTicket } from "./IGetTicket.port.js";
+import type { ITicketRepository } from "../ports/ITicketRepository.js";
 
-export class GetTicketService implements GetTicket{
+export class GetTicketService implements IGetTicket{
     constructor(private readonly ticketRepository: ITicketRepository){}
 
     public async execute(id: string):Promise<Ticket | null> {

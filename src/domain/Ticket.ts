@@ -10,10 +10,15 @@ export class Ticket{
     private description: string;
     private status: TicketStatus;
 
+    private customerEmail: string;
+    private tags: string[];
+
     constructor(
         id: string,
         title: TicketTitle,
         description: string,
+        customerEmail: string,
+        tags: string[] = [],
         status: TicketStatus = 'OPEN',
         createdAt: Date = new Date()
     ){
@@ -22,6 +27,8 @@ export class Ticket{
         this.description = description,
         this.status = status,
         this.createdAt = createdAt;
+        this.customerEmail = customerEmail,
+        this.tags = tags
     }
 
     public get Title():string{
@@ -35,7 +42,14 @@ export class Ticket{
     public get Status(): TicketStatus{
         return this.status;
     }
+    
+    public get CustomerEmail(): string{
+        return this.customerEmail;
+    }
 
+    public get Tags(): string[]{
+        return [...this.tags];
+    }
 
     //status
     public changeStatus(newStatus: TicketStatus): void{
@@ -51,5 +65,14 @@ export class Ticket{
         this.description = newDescription;
         
     }
+
+    public addTag(tag: string): void{
+        const cleanTag = tag.trim().toLowerCase();
+        if(!this.tags.includes(cleanTag)){
+            this.tags.push(cleanTag);
+        }
+    }
+
+    
 
 }

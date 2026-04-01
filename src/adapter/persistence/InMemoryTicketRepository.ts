@@ -1,4 +1,4 @@
-import type { ITicketRepository } from "../../application/ports/out/ITicketRepository.js";
+import type { ITicketRepository } from "../../application/ports/ITicketRepository.js";
 import type { Ticket } from "../../domain/Ticket.js";
 
 
@@ -25,5 +25,23 @@ export class InMemoryTicketRepository implements ITicketRepository{
         }
         this.tickets.set(ticket.id, ticket);
         console.log(`Update success ticket ${ticket.id}`)
+    }
+
+    public async delete(id: string): Promise<void> {
+        if(!this.tickets.has(id)){
+            throw new Error(`Can not to delete`);
+        }
+        this.tickets.delete(id);
+        console.log(`Delete success ticket ${id}`);
+    }
+
+    public async getStats(): Promise<{ total: number; open: number; hard: number; easy: number; }> {
+        const allTicket = Array.from(this.tickets.values());
+        return{
+            total: allTicket.length,
+            open: allTicket.filter(t=> t.Status === 'OPEN').length,
+            hard: allTicket.filter(t=> t.Tags.includes('hard')).length,
+            easy: allTicket.filter(t => t.Tags.includes('easy')).length
+        }
     }
 }
