@@ -31,7 +31,7 @@ Xây dựng hệ thống **SmartOps** dựa trên kiến trúc Hexagonal để t
 
 ### 3.4. Won't Have (Out of Scope)
 
-- **Advanced Web Dashboard:** Tập trung tối ưu CLI cho kỹ thuật viên.
+- **Advanced Web Dashboard:** Tập trung tối ưu CLI.
 
 ## 4. LỘ TRÌNH THỰC HIỆN (TIMELINE)
 
