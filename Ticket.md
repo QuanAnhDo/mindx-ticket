@@ -1,62 +1,53 @@
-# ĐỀ XUẤT DỰ ÁN: HỆ THỐNG QUẢN TRỊ TRI THỨC VÀ TỰ ĐỘNG HÓA VẬN HÀNH DOANH NGHIỆP (MINDX SMARTOPS)
+# PROJECT PROPOSAL: MINDX SMARTOPS (KNOWLEDGE MANAGEMENT & AUTOMATION)
 
-## 1. TỔNG QUAN DỰ ÁN (PROJECT OVERVIEW)
+## 1. VẤN ĐỀ CẦN CẢI TIẾN (THE PROBLEM)
 
-MindX SmartOps là giải pháp **Hệ thống Quản trị Tri thức Số hóa (Digital Knowledge Management System)**, đóng vai trò là lớp xử lý thông minh giữa các yêu cầu hỗ trợ phi cấu trúc và quy trình vận hành tiêu chuẩn. Dự án hướng tới việc chuyển đổi dữ liệu vận hành hằng ngày thành **Tài sản tri thức chiến lược**, giúp tự động hóa khâu tiếp nhận và tối ưu hóa quy trình đào tạo nhân sự mới (Onboarding).
+- **Knowledge Fragmentation:** Tri thức nghiệp vụ bị phân mảnh, phụ thuộc vào cá nhân (Tribal Knowledge).
+- **Mentor Overload:** Mentor dành 70% thời gian giải đáp các câu hỏi lặp lại cho Intern/Fresher.
+- **Slow Onboarding:** Nhân sự mới mất trung bình 4-6 tuần để có thể xử lý Ticket độc lập do thiếu công cụ tra cứu quy trình (SOP).
 
-## 2. MỤC TIÊU CHIẾN LƯỢC (STRATEGIC OBJECTIVES)
+## 2. GIẢI PHÁP ĐỀ XUẤT (PROPOSED SOLUTION)
 
-- **Tập trung hóa tri thức:** Xây dựng kho tri thức dùng chung, loại bỏ sự phụ thuộc vào trí nhớ cá nhân (Tribal Knowledge).
-- **Tối ưu hóa tra cứu:** Cung cấp công cụ truy xuất quy trình chuẩn (SOP) tức thời, giảm 70% thời gian chờ đợi phản hồi từ cấp quản lý.
-- **Số hóa quy trình đào tạo:** Thiết lập cơ chế "tự đào tạo" dựa trên dữ liệu thực tế cho nhân sự Intern/Fresher.
+Xây dựng hệ thống **SmartOps** dựa trên kiến trúc Hexagonal để tự động hóa luồng tiếp nhận Ticket và số hóa kho tri thức. Hệ thống tích hợp **AI (Gemini)** để phân loại và **Notion API** để cung cấp giải pháp (SOP) tức thời cho nhân sự qua CLI.
 
-## 3. PHÂN TÍCH ĐỐI TƯỢNG VÀ GIÁ TRỊ TÁC ĐỘNG (STAKEHOLDER ANALYSIS)
+## 3. CHI TIẾT GIẢI PHÁP (SOLUTION BREAKDOWN - MoSCoW)
+
+### 3.1. Must Have (Giai đoạn MVP - Hoàn thành Tuần 1-2)
+
+- **Automated Intake (POC):** Tự động đồng bộ yêu cầu từ Email/Gmail vào hệ thống.
+- **AI Classifier:** Tích hợp Gemini AI để tự động gắn nhãn (`Hard/Easy`) và phân loại nghiệp vụ.
+- **Core Management:** Quản lý vòng đời Ticket (Open, In-Progress, Resolved) trên MongoDB.
+
+### 3.2. Should Have (Giai đoạn MVP+ - Hoàn thành Tuần 3)
+
+- **Notion KB Integration:** Kết nối kho tri thức SOP trên Notion.
+- **CLI Knowledge Query:** Lệnh tra cứu nhanh giải pháp từ Notion trực tiếp trên Terminal dựa trên nhãn AI.
+- **Knowledge Capture:** Cơ chế cập nhật ngược các ca xử lý khó vào lại kho tri thức.
+
+### 3.3. Could Have (Future Plan)
+
+- **Auto-Reply Drafting:** Tự động soạn thảo bản thảo email phản hồi khách hàng dựa trên SOP.
+- **Slack/Telegram Alerts:** Cảnh báo thời gian thực khi có Ticket mức độ `Hard` hoặc `Urgent`.
+
+### 3.4. Won't Have (Out of Scope)
+
+- **Advanced Web Dashboard:** Tập trung tối ưu CLI cho kỹ thuật viên.
+
+## 4. LỘ TRÌNH THỰC HIỆN (TIMELINE)
 
 
-| Đối tượng                        | Thách thức hiện tại                                                       | Giá trị giải pháp mang lại                                                |
-| -------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| **Nhân sự mới (Intern/Fresher)** | Phụ thuộc hoàn toàn vào Mentor; Quy trình mơ hồ; Chu kỳ hội nhập kéo dài. | Tiếp cận chủ động với logic nghiệp vụ; Tăng 50% khả năng xử lý độc lập.   |
-| **Người quản lý (Mentor/Lead)**  | Quá tải vì các câu hỏi lặp lại; Điểm nghẽn năng suất trong đào tạo.       | Giải phóng 70% thời gian hướng dẫn cơ bản; Tập trung vào tối ưu hệ thống. |
+| Giai đoạn            | Tên gọi & Mục tiêu                                                                          | Kết quả cụ thể (Output)                                   | Thời gian | Trạng thái      |
+| -------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- | --------- | --------------- |
+| **GĐ 1: Khởi tạo**   | **Nền tảng & Kết nối (Foundation)** Mục tiêu: Thấy Mail tự động bay vào Database.           | - Cấu trúc dự án Hexagonal - Kết nối MongoDB & Email Sync | Tuần 1    | **Done**        |
+| **GĐ 2: Thông minh** | **Trí tuệ & Phân loại (Intelligence)** Mục tiêu: Hệ thống tự "đọc hiểu" và gắn nhãn Ticket. | - Tích hợp Gemini AI - Phân loại Hard/Easy & Tags         | Tuần 2    | **In-Progress** |
+| **GĐ 3: Tri thức**   | **Kho tri thức & Tra cứu (Knowledge)** Mục tiêu: Gõ lệnh là thấy hướng dẫn (SOP) từ Notion. | - Kết nối Notion API - Lệnh tra cứu giải pháp (Query)     | Tuần 3    | **Planned**     |
+| **GĐ 4: Hoàn thiện** | **Tối ưu & Chuyển giao (Finalization)** Mục tiêu: Hệ thống chạy mượt, tài liệu đầy đủ.      | - Refactor code, Testing - Video Demo & Document          | Tuần 4    | **Planned**     |
 
 
-## 4. CÁC THÁCH THỨC VẬN HÀNH CẦN GIẢI QUYẾT (PAIN POINTS)
+## 5. KẾ HOẠCH TƯƠNG LAI (FUTURE PLAN - HƯỚNG PHÁT TRIỂN NÂNG CAO)
 
-- **Rủi ro tập trung tri thức:** Tri thức nghiệp vụ bị cô lập tại một vài cá nhân, gây rủi ro khi có sự biến động nhân sự.
-- **Hiệu suất hội nhập thấp:** Thiếu hệ thống tài liệu hóa quy trình (SOP) tập trung khiến việc đào tạo tốn nhiều nguồn lực.
-- **Phản hồi chậm trễ:** Thời gian xử lý yêu cầu khách hàng bị kéo dài do nhân sự phải chờ hướng dẫn nghiệp vụ.
+- **AI Feedback Loop:** Thiết lập cơ chế cho phép Mentor sửa lại nhãn AI bị sai để mô hình học hỏi từ dữ liệu thực tế.
+- **Real-time Alerts:** Tích hợp cảnh báo qua Slack/Telegram khi có Ticket mức độ cao .
+- **Impact Analytics:** Thống kê tỷ lệ Ticket xử lý nhờ SOP mà không cần hỏi Mentor để đo lường giá trị thực tế của hệ thống.
+- **Engineering Excellence:** Viết Unit Tests và thiết lập CI/CD cơ bản để đảm bảo hệ thống luôn ổn định khi mở rộng.
 
-## 5. LỘ TRÌNH PHÁT TRIỂN TÍNH NĂNG (FEATURE ROADMAP)
-
-### 4.1. Giai đoạn P0: Nền tảng vận hành (Core Foundation)
-
-- **Automated Data Sync:** Tự động hóa việc quét và đồng bộ hóa yêu cầu từ Email/Gmail qua API vào hệ thống quản lý.
-- **Knowledge Base (Notion Integration):** Xây dựng cấu trúc lưu trữ SOP trên Notion, cho phép quản lý và cập nhật tri thức linh hoạt.
-- **Lifecycle Management:** Theo dõi trạng thái yêu cầu chuyên nghiệp (Open, In-Progress, Resolved).
-
-### 4.2. Giai đoạn P1: Tối ưu hóa thông minh (Intelligence)
-
-- **AI Classification (Gemini AI):** Tự động phân tích nội dung, gắn nhãn nghiệp vụ và phân loại mức độ ưu tiên.
-- **CLI Operational Tool:** Công cụ dòng lệnh hỗ trợ truy xuất nhanh SOP từ Notion ngay tại giao diện làm việc của kỹ thuật viên.
-
-### 4.3. Giai đoạn P2: Tự động hóa vòng lặp tri thức (Automation Loop)
-
-- **Knowledge Update Loop:** Quy trình hóa việc biến các Ticket đặc thù thành bài viết SOP mới trong kho tri thức.
-- **Smart Response Suggestions:** Hệ thống gợi ý mẫu phản hồi khách hàng dựa trên dữ liệu SOP hiện hành.
-
-## 6. CƠ CHẾ QUẢN TRỊ TRI THỨC ĐỘNG (DYNAMIC KNOWLEDGE LOOP)
-
-Hệ thống tạo ra một vòng đời tri thức khép kín:
-
-1. **Truy vấn (Query):** Nhân sự sử dụng CLI Tool kết nối Notion API để lấy giải pháp mới nhất ngay lập tức.
-2. **Cập nhật (Update):** Mentor chỉnh sửa quy trình trên giao diện Notion -> Thông tin được đồng bộ hóa tức thì tới toàn bộ đội ngũ.
-3. **Lưu trữ:** Mọi tình huống phát sinh mới đều được đúc rút và cập nhật ngược lại kho tri thức.
-
-## 7. KIẾN TRÚC KỸ THUẬT & AN TOÀN THÔNG TIN
-
-- **Kiến trúc:** Áp dụng **Hexagonal (Ports & Adapters)** để đảm bảo tính linh hoạt khi thay đổi công nghệ (Database, Mail Server, AI).
-- **Bảo mật:** Sử dụng giao thức **OAuth2** qua Azure AD/Google Cloud để truy cập dữ liệu, đảm bảo không lưu trữ thông tin nhạy cảm.
-- **Dự phòng:** Cơ chế Local Cache giúp đảm bảo tra cứu tri thức ngay cả khi gặp sự cố gián đoạn API bên thứ ba.
-
-## 8. KẾT LUẬN
-
-**MindX SmartOps** là bước đi chiến lược trong việc chuyển đổi từ mô hình đào tạo thủ công sang quản trị tri thức tự động. Dự án không chỉ tối ưu hóa vận hành hiện tại mà còn tạo nền tảng vững chắc cho sự phát triển bền vững của đội ngũ nhân sự.

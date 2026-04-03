@@ -1,62 +1,38 @@
-# PROJECT PROPOSAL: ENTERPRISE KNOWLEDGE MANAGEMENT & OPERATIONS AUTOMATION SYSTEM (MINDX SMARTOPS)
+# MindX SmartOps - AI-Powered Knowledge Management
 
-## 1. PROJECT OVERVIEW
+## 1. The Problem
+*   Operational knowledge is fragmented and person-dependent.
+*   Mentors are overwhelmed by repetitive basic inquiries.
+*   New personnel onboarding is slow due to lack of centralized SOPs.
 
-MindX SmartOps is a **Digital Knowledge Management System** designed to serve as an intelligent processing layer between unstructured support requests and standard operating procedures. The project aims to transform daily operational data into **Strategic Knowledge Assets**, automating the intake process and optimizing personnel onboarding.
+## 2. Proposed Solution
+An automated system utilizing **Hexagonal Architecture** to sync tickets from Email, classify them using **Gemini AI**, and provide instant solutions via **Notion-based Knowledge Base** through a CLI tool.
 
-## 2. STRATEGIC OBJECTIVES
+## 3. Solution Breakdown (MoSCoW)
 
-- **Knowledge Centralization:** Build a shared repository to eliminate dependency on individual memory (Tribal Knowledge).
-- **Query Optimization:** Provide tools for instantaneous Standard Operating Procedure (SOP) retrieval, reducing management feedback wait times by 70%.
-- **Training Digitalization:** Establish a self-serve onboarding mechanism based on real-world data for Interns and Freshers.
+### Must Have (MVP - Week 1-2)
+*   **Automated Sync:** Email to MongoDB synchronization.
+*   **AI Classification:** Auto-tagging tasks as `Hard/Easy` using Gemini AI.
+*   **CLI Core:** Commands to create, get, and view daily stats.
 
-## 3. STAKEHOLDER ANALYSIS & VALUE PROPOSITION
+### Should Have (Week 3)
+*   **Notion Integration:** SOP storage and synchronization with Notion.
+*   **CLI SOP Query:** Instant solution retrieval via Terminal.
 
+### Could Have (Future)
+*   Auto-drafting email responses and real-time alerts.
 
-| Stakeholder                        | Current Challenges                                                               | Solution Value                                                                       |
-| ---------------------------------- | -------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| **New Personnel (Intern/Fresher)** | Total dependency on Mentors; Vague workflows; Prolonged integration.             | Proactive access to business logic; 50% increase in independent handling capability. |
-| **Instructors (Mentor/Lead)**      | Frequent handling of repetitive inquiries; Productivity bottlenecks in training. | 70% time saved on basic guidance; Focus on system optimization and strategy.         |
+## 4. Timeline
 
+| Phase | Title & Goal | Deliverables | Week | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Phase 1** | **Foundation**<br>Goal: Auto-sync Emails to Database. | - Hexagonal structure<br>- Mongo & Email Sync | Week 1 | **Done** |
+| **Phase 2** | **Intelligence**<br>Goal: AI Auto-tagging & Classification. | - Gemini AI Integration<br>- Hard/Easy tagging | Week 2 | **In-Progress** |
+| **Phase 3** | **Knowledge**<br>Goal: Instant SOP lookup via Notion. | - Notion API Integration<br>- CLI Query Tool | Week 3 | **Planned** |
+| **Phase 4** | **Finalization**<br>Goal: Full validation & Handover. | - Refactoring & Testing<br>- Documentation | Week 4 | **Planned** |
 
-## 4. OPERATIONAL CHALLENGES (PAIN POINTS)
-
-- **Knowledge Isolation Risk:** Critical business logic is trapped within individuals, posing risks during personnel turnover.
-- **Inefficient Onboarding:** Lack of centralized SOP documentation leads to resource-intensive training cycles.
-- **Response Latency:** Customer request handling is delayed due to personnel waiting for operational guidance.
-
-## 5. FEATURE ROADMAP & PRIORITIZATION
-
-### 4.1. Phase P0: Operational Core (Foundation)
-
-- **Automated Data Sync:** Automating the ingestion and synchronization of requests from Email/Gmail via API into the management system.
-- **Knowledge Base (Notion Integration):** Building a structured SOP repository on Notion for flexible and scalable knowledge management.
-- **Lifecycle Management:** Professional status tracking for all requests.
-
-### 4.2. Phase P1: Intelligent Optimization (Intelligence)
-
-- **AI Classification (Gemini AI):** Automated content analysis, business tagging, and difficulty prioritization.
-- **CLI Operational Tool:** A terminal-based utility for instantaneous SOP retrieval directly from the technician's workspace.
-
-### 4.3. Phase P2: Automating the Knowledge Loop (Automation)
-
-- **Knowledge Update Loop:** A workflow to institutionalize the conversion of unique tickets into new SOP articles.
-- **Smart Response Suggestions:** Drafting professional responses based on current SOP data and historical cases.
-
-## 6. DYNAMIC KNOWLEDGE MANAGEMENT MECHANISM
-
-The system creates a continuous knowledge lifecycle:
-
-1. **Query:** Personnel use the CLI Tool connected to the Notion API for real-time solutions.
-2. **Update:** Mentors edit procedures on the Notion interface -> Changes are instantly effective for the entire team.
-3. **Storage:** Every new scenario is captured, refined, and updated back into the knowledge base.
-
-## 7. TECHNICAL ARCHITECTURE & SECURITY
-
-- **Architecture:** Employs the **Hexagonal (Ports & Adapters)** pattern for maximum flexibility across technology stacks (DB, Mail, AI).
-- **Security:** Utilizes **OAuth2** via Azure AD/Google Cloud for data access, ensuring no sensitive credentials are stored locally.
-- **Risk Mitigation:** Local caching mechanisms ensure knowledge availability even during third-party API outages.
-
-## 8. CONCLUSION
-
-**MindX SmartOps** represents a strategic shift from manual training models to automated knowledge management. The solution not only optimizes current operations but also provides a solid foundation for sustainable team growth.
+## 5. Future Plan (Advanced Development)
+*   **AI Feedback Loop:** Mechanism for Mentors to correct AI tags to refine AI prompt accuracy over time.
+*   **Real-time Alerts:** Integration with Slack/Telegram for instant notifications on Urgent or Hard tickets.
+*   **Impact Analytics:** Tracking the percentage of tickets resolved via SOPs to measure operational ROI.
+*   **Engineering Excellence:** Implementing Unit Tests and basic CI/CD pipelines for better system reliability.
