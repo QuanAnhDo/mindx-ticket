@@ -38,7 +38,7 @@ Xây dựng hệ thống **SmartOps** dựa trên kiến trúc Hexagonal để t
 
 | Giai đoạn            | Tên gọi & Mục tiêu                                                                          | Kết quả cụ thể (Output)                                   | Thời gian | Trạng thái      |
 | -------------------- | ------------------------------------------------------------------------------------------- | --------------------------------------------------------- | --------- | --------------- |
-| **GĐ 1: Khởi tạo**   | **Nền tảng & Kết nối (Foundation)** Mục tiêu: Thấy Mail tự động bay vào Database.           | - Cấu trúc dự án Hexagonal - Kết nối MongoDB & Email Sync | Tuần 1    | **Done**        |
+| **GĐ 1: Khởi tạo**   | **Nền tảng & Kết nối (Foundation)** Mục tiêu: Thấy Mail tự động bay vào Database.           | - Cấu trúc dự án Hexagonal - Kết nối MongoDB & Email Sync | Tuần 1    | **In-Progress** |
 | **GĐ 2: Thông minh** | **Trí tuệ & Phân loại (Intelligence)** Mục tiêu: Hệ thống tự "đọc hiểu" và gắn nhãn Ticket. | - Tích hợp Gemini AI - Phân loại Hard/Easy & Tags         | Tuần 2    | **In-Progress** |
 | **GĐ 3: Tri thức**   | **Kho tri thức & Tra cứu (Knowledge)** Mục tiêu: Gõ lệnh là thấy hướng dẫn (SOP) từ Notion. | - Kết nối Notion API - Lệnh tra cứu giải pháp (Query)     | Tuần 3    | **Planned**     |
 | **GĐ 4: Hoàn thiện** | **Tối ưu & Chuyển giao (Finalization)** Mục tiêu: Hệ thống chạy mượt, tài liệu đầy đủ.      | - Refactor code, Testing - Video Demo & Document          | Tuần 4    | **Planned**     |

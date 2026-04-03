@@ -4,8 +4,6 @@ node_modules/
 dist/
 build/
 
-src/
 .env
-
 
 data/tickets.json
