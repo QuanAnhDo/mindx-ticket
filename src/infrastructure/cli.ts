@@ -1,7 +1,8 @@
 import { Command } from "commander";
-import { InMemoryTicketRepository } from "../adapter/persistence/InMemoryTicketRepository.js";
 import { CreateTicketService } from "../application/usecases/CreateTicket.service.js";
 import { GetTicketService } from "../application/usecases/GetTicket.service.js";
+import { TicketTitle } from "../domain/value-objects/TicketTitle.js";
+import { GeminiTicketClassifier } from "../adapter/persistence/GeminiTicketClassifier.js";
 import dotenv from 'dotenv';
 import { MongoClient } from 'mongodb';
 import { MongoTicketRepository } from "../adapter/persistence/MongoTicketRepository.js";
@@ -11,12 +12,17 @@ const program = new Command();
 
 async function run(){
 
-  const client = new MongoClient(process.env.MONGO_URL || 'mongodb://localhost:27017');
+  const client = new MongoClient(process.env.MONGO_URI || 'mongodb://localhost:27017');
 await client.connect();
 const db = client.db('mindx-ticket')
-// const repo = new InMemoryTicketRepository();
+
 const repo = new MongoTicketRepository(db);
-const create = new CreateTicketService(repo);
+
+const classifier = process.env.GEMINI_API_KEY 
+    ? new GeminiTicketClassifier(process.env.GEMINI_API_KEY)
+    : undefined;
+
+const create = new CreateTicketService(repo, classifier);
 const get = new GetTicketService(repo);
 
 
@@ -25,16 +31,21 @@ program
   .description('Công cụ quản lý Ticket(CLI)')
   .version('1.0.0');
 
-// Lệnh: mindx-ticket create <title> <description>
+// Lệnh: mindx-ticket create <title> <description> <customerEmail>
 program.command('create')
   .description('Tạo một ticket mới')
   .argument('<title>', 'Tiêu đề của ticket')
   .argument('<description>', 'Mô tả chi tiết')
+  .argument('<customerEmail>', 'Email khách hàng')
   .action(async (title, description, customerEmail) => {
     try {
-      const ticket = await create.execute({title, description, customerEmail});
+      const ticket = await create.execute({
+        title: new TicketTitle(title), 
+        description, 
+        customerEmail
+      });
       console.log('Đã tạo Ticket thành công!');
-      console.log(`ID: ${ticket.id} | Trạng thái: ${ticket.Status}`);
+      console.log(`ID: ${ticket.id} | Trạng thái: ${ticket.Status} | Tags: ${ticket.Tags.join(', ')}`);
     } catch (error: any) {
       console.error(`Lỗi: ${error.message}`);
     }

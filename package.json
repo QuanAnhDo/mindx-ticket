@@ -16,7 +16,9 @@
   "dependencies": {
     "@automapper/classes": "^8.8.1",
     "@automapper/nestjs": "^8.8.1",
+    "@azure/msal-node": "^5.1.2",
     "@google/generative-ai": "^0.24.1",
+    "@microsoft/microsoft-graph-client": "^3.0.7",
     "commander": "^14.0.3",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",

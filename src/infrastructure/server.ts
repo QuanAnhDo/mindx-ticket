@@ -9,7 +9,8 @@ import { TicketHttp } from '../adapter/http/TicketHttp.js';
 import { MongoTicketRepository } from '../adapter/persistence/MongoTicketRepository.js';
 import { MongoClient } from 'mongodb';
 import { DeleteTicketService } from '../application/usecases/DeleteTicket.service.js';
-import { OutlookEmail } from '../adapter/email/Gmail.js';
+import { OutlookEmail } from '../adapter/email/OutlookEmail.js';
+import { GeminiTicketClassifier } from '../adapter/persistence/GeminiTicketClassifier.js';
 import dotenv from 'dotenv';
 
 const app = express();
@@ -17,19 +18,25 @@ app.use(express.json());
 app.use(cors());
 
 async function bootstrap(){
-  
+
   dotenv.config();
-  const client = new MongoClient('mongodb://localhost:27017');
+  const client = new MongoClient(process.env.MONGO_URI || 'mongodb://localhost:27017');
   await client.connect();
   const db = client.db('mindx-ticket');
   console.log(`Connect success to Mongo`)
   //const repo = new InMemoryTicketRepository(); 
   const repo = new MongoTicketRepository(db);
-  const createUseCase = new CreateTicketService(repo);
+
+  const classifier = process.env.GEMINI_API_KEY 
+    ? new GeminiTicketClassifier(process.env.GEMINI_API_KEY)
+    : undefined;
+
+  const createUseCase = new CreateTicketService(repo, classifier);
   const getUseCase = new GetTicketService(repo);
   const updateUseCase = new UpdateTicketStatusService(repo);
   const deleteUseCase = new DeleteTicketService(repo);
   const controller = new TicketHttp(createUseCase, getUseCase, updateUseCase, deleteUseCase );
+
 
 
   //mail
